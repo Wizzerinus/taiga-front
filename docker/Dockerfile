@@ -4,6 +4,17 @@
 #
 # Copyright (c) 2021-present Kaleidos Ventures SL
 
+FROM node:18 AS taiga-compiler
+WORKDIR /npm-files
+COPY package.json /npm-files
+COPY package-lock.json /npm-files
+RUN npm install
+RUN npm install gulp
+COPY . /build
+WORKDIR /build
+RUN mv /npm-files/node_modules /npm-files/package.json .
+RUN npm run start deploy
+
 FROM nginx:1.23-alpine
 LABEL maintainer="support@taiga.io"
 
@@ -13,15 +24,11 @@ COPY docker/config_env_subst.sh /docker-entrypoint.d/30_config_env_subst.sh
 
 RUN set -eux; \
     apk update; \
-    apk add --no-cache --virtual .build-deps \
-       subversion; \
-    apk add \
-       bash; \
-    # Install taiga-front core
-    wget https://github.com/kaleidos-ventures/taiga-front-dist/archive/6.6.2.zip -O source.zip; \
-    unzip source.zip; \
-    mv /taiga-front-dist-6.6.2 /taiga; \
-    mv /conf.json.template taiga/dist/; \
+    apk add --no-cache --virtual .build-deps subversion; \
+    apk add bash
+
+COPY --from=taiga-compiler /build/dist /taiga/dist
+RUN mv /conf.json.template taiga/dist/; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
     mkdir /taiga/dist/plugins; \
