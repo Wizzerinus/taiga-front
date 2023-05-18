@@ -330,7 +330,8 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
             isPermissionEditable = (permission, role, project) ->
                 if role.external_user &&
                    !project.is_private &&
-                   permission.key.indexOf("view_") == 0
+                   permission.key.indexOf("view_") == 0 &&
+                   permission.key.split("_").length == 2
                     return false
                 else
                     return true
@@ -495,7 +496,7 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 if $scope.role.external_user
                     $scope.project.public_permissions = $scope.role.permissions
                     $scope.project.anon_permissions = $scope.role.permissions.filter (permission) ->
-                        return permission.indexOf("view_") == 0
+                        return permission.indexOf("view_") == 0 && permission.split("_").length == 2
 
                     $repo.save($scope.project).then onSuccess, onError
                 else
