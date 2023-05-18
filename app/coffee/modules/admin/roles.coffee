@@ -406,6 +406,10 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 { key: "modify_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.MODIFY_ISSUES"}
                 { key: "comment_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.COMMENT_ISSUES"}
                 { key: "delete_issue", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.DELETE_ISSUES"}
+                { key: "view_issues_testing", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.VIEW_ISSUES_TESTING"}
+                { key: "edit_issues_testing", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.EDIT_ISSUES_TESTING"}
+                { key: "view_issues_security", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.VIEW_ISSUES_SECURITY"}
+                { key: "edit_issues_security", name: "COMMON.PERMISIONS_CATEGORIES.ISSUES.EDIT_ISSUES_SECURITY"}
             ]
 
             categories.push({

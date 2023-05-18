@@ -85,9 +85,12 @@ module.factory("$selectedText", ["$window", "$document", SelectedText])
 #############################################################################
 
 CheckPermissionDirective = (projectService) ->
+    hasPermission = (project, permission) ->
+        return permission.split(',').filter((p) => project.get('my_permissions').indexOf(p) == -1).length == 0
+
     render = ($el, project, permission) ->
         if project && permission
-            $el.removeClass('hidden') if project.get('my_permissions').indexOf(permission) > -1
+            $el.removeClass('hidden') if hasPermission(project, permission)
 
     link = ($scope, $el, $attrs) ->
         $el.addClass('hidden')

@@ -880,6 +880,8 @@ CardAssignedToDirective = ($template, $translate, avatarService, projectService)
             translate: (key, params) =>
                 return $translate.instant(key, params)
             checkPermission: (permission) =>
+                if Array.isArray(permission)
+                    return permission.filter((p) => projectService.project.get('my_permissions').indexOf(p) == -1).length == 0
                 return projectService.project.get('my_permissions').indexOf(permission) > -1
             svg: (svgData) =>
                 return svgTemplate(Object.assign({
@@ -1025,6 +1027,8 @@ CardActionsDirective = ($template, $translate, projectService) ->
             translate: (key, params) =>
                 return $translate.instant(key, params)
             checkPermission: (permission) =>
+                if Array.isArray(permission)
+                    return permission.filter((p) => projectService.project.get('my_permissions').indexOf(p) == -1).length == 0
                 return projectService.project.get('my_permissions').indexOf(permission) > -1
             svg: (svgData) =>
                 return svgTemplate(Object.assign({

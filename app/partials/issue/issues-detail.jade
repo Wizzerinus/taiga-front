@@ -96,6 +96,7 @@ div.wrapper(
                 ng-if="issue"
                 type="issue"
                 name="issue"
+                issue-scope="{{issue.scope}}"
                 id="issue.id"
                 project="project"
             )
@@ -122,6 +123,10 @@ div.wrapper(
             )
             div.ticket-status(
                 tg-issue-priority-button
+                ng-model="issue"
+            )
+            div.ticket-status(
+                tg-issue-scope-button
                 ng-model="issue"
             )
 

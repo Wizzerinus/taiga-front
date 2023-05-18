@@ -641,6 +641,104 @@ IssuePriorityButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTra
 
 module.directive("tgIssuePriorityButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$compile", IssuePriorityButtonDirective])
 
+IssueScopeButtonDirective = ($rootScope, $repo, $confirm, $loading, $modelTransform, $template, $compile) ->
+    # Display the scope of an Issue.
+    # Copy-pasted from IssuePriorityButtonDirective.
+    #
+    # Example:
+    #     tg-issue-scioe-button(ng-model="issue")
+    #
+    # Requirements:
+    #   - Issue object (ng-model)
+    #   - $scope.project.my_permissions
+
+    template = $template.get("issue/issue-scope-button.html", true)
+
+    link = ($scope, $el, $attrs, $model) ->
+        notAutoSave = $scope.$eval($attrs.notAutoSave)
+        forceEditable = $scope.$eval($attrs.forceEditable)
+
+        isEditable = ->
+            return forceEditable || $scope.project.my_permissions.indexOf("modify_issue") != -1
+
+        render = (issue) ->
+            scope = issue.scope
+            scope_data = $scope.issue_scopes[scope] || $scope.issue_scopes.normal
+            accessible_scopes = ["normal"]
+            for otherScope in ["security", "testing"]
+                if $scope.project.my_permissions.indexOf("issues_" + otherScope) != -1
+                    accessible_scopes.push(otherScope)
+            html = template({
+                scope: scope_data
+                scopes: _.map(accessible_scopes, (s) => $scope.issue_scopes[s])
+                editable: isEditable()
+            })
+
+            html = $compile(html)($scope)
+
+            $el.html(html)
+
+        save = (scope) ->
+            $.fn.popover().closeAll()
+
+            if notAutoSave
+                $model.$modelValue.scope = scope
+                $scope.$apply()
+                return
+
+            currentLoading = $loading()
+                .target($el.find(".level-name"))
+                .start()
+
+            transform = $modelTransform.save (issue) ->
+                issue.scope = scope
+
+                return issue
+
+            onSuccess = ->
+                $rootScope.$broadcast("object:updated")
+                currentLoading.finish()
+
+            onError = ->
+                $confirm.notify("error")
+                currentLoading.finish()
+
+            transform.then(onSuccess, onError)
+
+        $el.on "click", ".scope-data", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            $el.find(".pop-scope").popover().open()
+
+        $el.on "click", ".scope", (event) ->
+            event.preventDefault()
+            event.stopPropagation()
+            return if not isEditable()
+
+            target = angular.element(event.currentTarget)
+            scope = target.data("scope-id")
+
+            save(scope)
+
+        $scope.$watch () ->
+            return $model.$modelValue?.scope
+        , () ->
+            issue = $model.$modelValue
+            render(issue) if issue
+
+        $scope.$on "$destroy", ->
+            $el.off()
+
+    return {
+        link: link
+        restrict: "EA"
+        require: "ngModel"
+    }
+
+module.directive("tgIssueScopeButton", ["$rootScope", "$tgRepo", "$tgConfirm", "$tgLoading", "$tgQueueModelTransformation", "$tgTemplate", "$compile", IssueScopeButtonDirective])
+
 
 #############################################################################
 ## Add Issue to Sprint button directive

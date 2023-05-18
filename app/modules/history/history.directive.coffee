@@ -27,7 +27,8 @@ HistorySectionDirective = () ->
             type: "=",
             name: "@",
             id: "=",
-            project: "="
+            project: "=",
+            issueScope: "@"
         }
     }
 

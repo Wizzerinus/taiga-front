@@ -899,6 +899,12 @@ init = ($log, $rootscope, $auth, $events, $analytics, $tagManager, $userPilot, $
         projectService) ->
     $log.debug("Initialize application")
 
+    $rootscope.issue_scopes = {
+        normal: {id: "normal", name: "Normal", color: "#00cc00", title: "Most issues go here"},
+        testing: {id: "testing", name: "Testing", color: "#9900cc", title: "Occurred in the testing server"},
+        security: {id: "security", name: "Security", color: "#dd0000", title: "Security vulnerabilities and exploits"}
+    }
+
     $rootscope.$on '$translatePartialLoaderStructureChanged', () ->
         $translate.refresh()
 

@@ -22,6 +22,7 @@ class UserTimelineItemTitle
         'assigned_to': 'COMMON.FIELDS.ASSIGNED_TO',
         'assigned_users': 'COMMON.FIELDS.ASSIGNED_USERS',
         'severity': 'ISSUES.FIELDS.SEVERITY',
+        'scope': 'ISSUES.FIELDS.SCOPE',
         'priority': 'ISSUES.FIELDS.PRIORITY',
         'type': 'ISSUES.FIELDS.TYPE',
         'is_iocaine': 'TASK.FIELDS.IS_IOCAINE',

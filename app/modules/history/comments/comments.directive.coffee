@@ -29,6 +29,7 @@ CommentsDirective = () ->
             editing: "<",
             project: "=",
             reverse: "="
+            issueScope: "<",
         },
         templateUrl:"history/comments/comments.html",
         bindToController: true,

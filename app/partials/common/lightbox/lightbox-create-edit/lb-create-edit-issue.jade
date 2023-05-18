@@ -23,6 +23,11 @@ div.ticket-data-container
         not-auto-save="true"
         ng-model="obj"
     )
+    tg-issue-scope-button.ticket-status(
+        not-auto-save="true"
+        ng-model="obj"
+        force-editable="true"
+    )
 
 div.ticket-detail-settings
     tg-due-date-popover(

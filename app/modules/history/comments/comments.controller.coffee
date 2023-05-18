@@ -14,6 +14,9 @@ class CommentsController
     constructor: () ->
 
     initializePermissions: () ->
-        @.canAddCommentPermission = 'comment_' + @.name
+        if @.issueScope && @.issueScope != "undefined" && @.name == "issue" && @.issueScope != "normal"
+            @.canAddCommentPermission = ['comment_' + @.name, 'edit_issues_' + @.issueScope].join(',')
+        else
+            @.canAddCommentPermission = 'comment_' + @.name
 
 module.controller("CommentsCtrl", CommentsController)

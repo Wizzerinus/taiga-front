@@ -118,6 +118,9 @@
     .priority-data {
         @include category-choices;
     }
+    .scope-data {
+        @include category-choices;
+    }
 }
 
 .ticket-section-label {

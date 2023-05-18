@@ -380,6 +380,25 @@ ListItemTypeDirective = ->
 module.directive("tgListitemType", ListItemTypeDirective)
 
 
+ListItemScopeDirective = ->
+    link = ($scope, $el, $attrs) ->
+        render = (issue) ->
+            type = $scope.issue_scopes[issue.scope]
+            domNode = $el.find(".level")
+            domNode.css("background-color", type.color)
+            domNode.attr("title", type.name)
+
+        $scope.$watch $attrs.tgListitemScope, (issue) ->
+            render(issue)
+
+    return {
+        link: link
+        templateUrl: "common/components/level.html"
+    }
+
+module.directive("tgListitemScope", ListItemScopeDirective)
+
+
 ListItemPriorityDirective = ->
     link = ($scope, $el, $attrs) ->
         render = (priorityById, issue) ->
