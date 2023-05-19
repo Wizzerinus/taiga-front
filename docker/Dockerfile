@@ -10,36 +10,41 @@ COPY package.json /npm-files
 COPY package-lock.json /npm-files
 RUN npm install
 RUN npm install gulp
-COPY . /build
+
 WORKDIR /build
 RUN mv /npm-files/node_modules /npm-files/package.json .
+
+# Apparently copying every part of the app separately improves caching
+# And also apparently you can't copy folders in a multi-copy command
+COPY .babelrc .stylelintrc.js coffeelint.json csslintrc.json \
+     gulpfile.js gulp-utils.js locales.js elements.js /build/
+COPY app-loader /build/app-loader
+COPY conf /build/conf
+COPY extras /build/extras
+COPY emojis /build/emojis
+COPY app /build/app
+
 RUN npm run start deploy
 
 FROM nginx:1.23-alpine
 LABEL maintainer="support@taiga.io"
 
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
-COPY docker/conf.json.template /
 COPY docker/config_env_subst.sh /docker-entrypoint.d/30_config_env_subst.sh
 
 RUN set -eux; \
     apk update; \
     apk add --no-cache --virtual .build-deps subversion; \
-    apk add bash
-
-COPY --from=taiga-compiler /build/dist /taiga/dist
-RUN mv /conf.json.template taiga/dist/; \
+    apk add bash ; \
     chmod +x /docker-entrypoint.d/30_config_env_subst.sh; \
     # Install taiga-front contribs
-    mkdir /taiga/dist/plugins; \
-    cd /taiga/dist/plugins; \
+    mkdir -p /usr/share/nginx/html/plugins; \
+    cd /usr/share/nginx/html/plugins; \
     svn export "https://github.com/kaleidos-ventures/taiga-contrib-slack/tags/6.6.0/front/dist" "slack"; \
     svn export "https://github.com/kaleidos-ventures/taiga-contrib-github-auth/tags/6.6.0/front/dist" "github-auth"; \
     svn export "https://github.com/kaleidos-ventures/taiga-contrib-gitlab-auth/tags/6.6.0/front/dist" "gitlab-auth"; \
     cd /; \
-    # Remove unused dependencies
-    apk del --no-cache .build-deps; \
-    rm source.zip; \
-    # Ready for nginx
-    mv /taiga/dist/* /usr/share/nginx/html; \
-    rm -rf /taiga
+    apk del --no-cache .build-deps
+
+COPY --from=taiga-compiler /build/dist/ /usr/share/nginx/html/
+COPY docker/conf.json.template /usr/share/nginx/html
