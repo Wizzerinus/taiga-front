@@ -19,6 +19,8 @@
         vm="vm"
     )
 
+    span.card-task-progress {{ vm.getCompletedTaskString() }}
+
     div(ng-if="vm.zoomLevel > 0")
         include card-templates/card-epics
     include card-templates/card-title

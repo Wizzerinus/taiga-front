@@ -423,11 +423,11 @@ class KanbanController extends mixOf(taiga.Controller, taiga.PageMixin, taiga.Fi
     loadUserstoriesParams: () ->
         params = {
             status__is_archived: false
+            include_tasks: true
         }
 
         if @.zoomLevel >= 2
             params.include_attachments = 1
-            params.include_tasks = 1
 
         locationParams = _.pick(_.clone(@location.search()), @.validQueryParams)
         params = _.merge params, locationParams

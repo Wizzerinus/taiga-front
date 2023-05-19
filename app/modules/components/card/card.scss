@@ -327,6 +327,14 @@ $iocaine: #b400d1;
     }
 }
 
+.card-task-progress {
+    position: absolute;
+    right: .25rem;
+    bottom: .25rem;
+    z-index: $first-layer;
+    color: $color-black900;
+}
+
 .card-actions {
     position: absolute;
     right: .25rem;

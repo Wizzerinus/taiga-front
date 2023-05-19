@@ -114,4 +114,12 @@ class CardController
         else
             return 'project-userstories-detail'
 
+    getCompletedTaskString: () ->
+        tasks = @.item.getIn(["model", "tasks"])
+        return '' if !tasks || !tasks.size
+        allCount = tasks.size
+        return '' if allCount == 0
+        completedCount = tasks.filter((t) -> t.get("is_closed")).size
+        return "#{completedCount}/#{allCount}"
+
 angular.module('taigaComponents').controller('Card', CardController)
