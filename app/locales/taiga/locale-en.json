@@ -341,7 +341,7 @@
     },
     "LOGIN_COMMON": {
         "HEADER": "I already have a Taiga login",
-        "PLACEHOLDER_AUTH_NAME": "Username or email (case sensitive)",
+        "PLACEHOLDER_AUTH_NAME": "Login or email (case sensitive)",
         "LINK_FORGOT_PASSWORD": "Forgot it?",
         "TITLE_LINK_FORGOT_PASSWORD": "Did you forget your password?",
         "ACTION_ENTER": "Enter",
@@ -350,7 +350,7 @@
         "ALT_LOGIN": "Or login with"
     },
     "LOGIN_FORM": {
-        "ERROR_AUTH_INCORRECT": "According to the Taiga, your username/email or password are incorrect.",
+        "ERROR_AUTH_INCORRECT": "According to the Taiga, your login/email or password are incorrect.",
         "SUCCESS": "Welcome to Taiga."
     },
     "REGISTER": {
@@ -359,8 +359,8 @@
     },
     "REGISTER_FORM": {
         "TITLE": "Register a new Taiga account (free)",
-        "PLACEHOLDER_NAME": "Pick a username",
-        "PLACEHOLDER_FULL_NAME": "Pick your full name",
+        "PLACEHOLDER_NAME": "Pick a login",
+        "PLACEHOLDER_FULL_NAME": "Pick your username",
         "PLACEHOLDER_EMAIL": "Your email",
         "PLACEHOLDER_PASSWORD": "Set a password (case sensitive)",
         "ACTION_SIGN_UP": "Sign up",
@@ -369,12 +369,12 @@
     },
     "FORGOT_PASSWORD": {
         "PAGE_TITLE": "Forgot password - Taiga",
-        "PAGE_DESCRIPTION": "Enter your username or email to get a new password and you can access to Taiga again."
+        "PAGE_DESCRIPTION": "Enter your login or email to get a new password and you can access to Taiga again."
     },
     "FORGOT_PASSWORD_FORM": {
         "TITLE": "Oops, did you forget your password?",
-        "SUBTITLE": "Enter your username or email to get a new one",
-        "PLACEHOLDER_FIELD": "Username or email",
+        "SUBTITLE": "Enter your login or email to get a new one",
+        "PLACEHOLDER_FIELD": "Login or email",
         "ACTION_RESET_PASSWORD": "Reset Password",
         "LINK_CANCEL": "Nah, take me back. I think I remember it.",
         "SUCCESS_TITLE": "Check your inbox!",
@@ -1692,7 +1692,7 @@
         "PAGE_TITLE": "Team - {{projectName}}",
         "PAGE_DESCRIPTION": "The team panel to show all the members of the project {{projectName}}: {{projectDescription}}",
         "SECTION_NAME": "Team",
-        "PLACEHOLDER_INPUT_SEARCH": "Search by full name...",
+        "PLACEHOLDER_INPUT_SEARCH": "Search by username...",
         "COLUMN_MR_WOLF": "Mr. Wolf",
         "EXPLANATION_COLUMN_MR_WOLF": "Closed issues",
         "COLUMN_IOCAINE": "Iocaine Drinker",
@@ -1754,10 +1754,10 @@
         "VERIFY_EMAIL_SUCCESS": "<strong>Check your inbox!</strong><br />We have sent you an email<br />with instructions on how to verify your address",
         "CHANGE_PHOTO": "Change photo",
         "FIELD": {
-            "USERNAME": "Username",
+            "USERNAME": "Login",
             "EMAIL": "Email",
-            "FULL_NAME": "Full name",
-            "PLACEHOLDER_FULL_NAME": "Set your full name (ex. Íñigo Montoya)",
+            "FULL_NAME": "Username",
+            "PLACEHOLDER_FULL_NAME": "Set your username (ex. John Doe)",
             "BIO": "Bio (max. 210 chars)",
             "PLACEHOLDER_BIO": "Tell us something about you",
             "LANGUAGE": "Language",
