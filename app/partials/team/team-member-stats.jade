@@ -6,39 +6,14 @@
 //- Copyright (c) 2021-present Kaleidos Ventures SL
 
 .attribute(ng-if="issuesEnabled")
-    tg-svg(
-        svg-icon="icon-briefcase",
-        ng-style="{'opacity': stats.closed_bugs[userId]}",
-        ng-class="{'top': stats.closed_bugs[userId] == 1}"
-    )
-
-.attribute(ng-if="tasksEnabled")
-    tg-svg(
-        svg-icon="icon-iocaine",
-        ng-style="{'opacity': stats.iocaine_tasks[userId]}",
-        ng-class="{'top': stats.iocaine_tasks[userId] == 1}"
-    )
-
-.attribute(ng-if="wikiEnabled")
-    tg-svg(
-        svg-icon="icon-edit",
-        ng-style="{'opacity': stats.wiki_changes[userId]}",
-        ng-class="{'top': stats.wiki_changes[userId] == 1}"
-    )
-
+    span.points(ng-bind="stats.created_bugs[userId]")
 .attribute(ng-if="issuesEnabled")
-    tg-svg(
-        svg-icon="icon-bug",
-        ng-style="{'opacity': stats.created_bugs[userId]}",
-        ng-class="{'top': stats.created_bugs[userId] == 1}"
-    )
-
+    span.points(ng-bind="stats.closed_bugs[userId]")
+.attribute(ng-if="issuesEnabled")
+    span.points(ng-bind="stats.assigned_bugs[userId]")
 .attribute(ng-if="tasksEnabled")
-    tg-svg(
-        svg-icon="icon-task",
-        ng-style="{'opacity': stats.closed_tasks[userId]}",
-        ng-class="{'top': stats.closed_tasks[userId] == 1}"
-    )
-
-.attribute
-    span.points(ng-bind="stats.totals[userId]")
+    span.points(ng-bind="stats.closed_tasks[userId]")
+.attribute(ng-if="tasksEnabled")
+    span.points(ng-bind="stats.assigned_tasks[userId]")
+.attribute(ng-if="wikiEnabled")
+    span.points(ng-bind="stats.wiki_changes[userId]")

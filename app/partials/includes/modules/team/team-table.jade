@@ -9,30 +9,18 @@ section.table-team.basic-table
     header.row.team-header
         div.username
         div.member-stats
-            div.attribute.attribute-name(ng-if="issuesEnabled")
-                span(translate="TEAM.COLUMN_MR_WOLF")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_MR_WOLF")
-            div.attribute(ng-if="tasksEnabled")
-                span(translate="TEAM.COLUMN_IOCAINE")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_IOCAINE")
-            div.attribute(ng-if="wikiEnabled")
-                span(translate="TEAM.COLUMN_CERVANTES")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_CERVANTES")
             div.attribute(ng-if="issuesEnabled")
-                span(translate="TEAM.COLUMN_BUG_HUNTER")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_BUG_HUNTER")
+                span(translate="TEAM.COLUMN_ISSUES_REPORTED")
+            div.attribute(ng-if="issuesEnabled")
+                span(translate="TEAM.COLUMN_ISSUES_CLOSED")
+            div.attribute(ng-if="issuesEnabled")
+                span(translate="TEAM.COLUMN_ISSUES_ASSIGNED")
             div.attribute(ng-if="tasksEnabled")
-                span(translate="TEAM.COLUMN_NIGHT_SHIFT")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_NIGHT_SHIFT")
-            div.attribute
-                span(translate="TEAM.COLUMN_TOTAL_POWER")
-                div.tooltip.attribute-explanation
-                    span(translate="TEAM.EXPLANATION_COLUMN_TOTAL_POWER")
+                span(translate="TEAM.COLUMN_TASKS_CLOSED")
+            div.attribute(ng-if="tasksEnabled")
+                span(translate="TEAM.COLUMN_TASKS_ASSIGNED")
+            div.attribute(ng-if="wikiEnabled")
+                span(translate="TEAM.COLUMN_WIKI_PAGES_WRITTEN")
 
     div.hero(
         tg-team-current-user
@@ -44,6 +32,7 @@ section.table-team.basic-table
         wikienabled="wikiEnabled"
         owner="owner"
         ng-if="::currentUser"
+        emplogenabled="employeeActivated"
     )
 
 h2(ng-show="memberships.length")
@@ -60,4 +49,6 @@ section.table-team.basic-table(
     tasksenabled="tasksEnabled"
     wikienabled="wikiEnabled"
     owner="owner"
+    emplogenabled="employeeManagerActivated"
+    project="project"
 )

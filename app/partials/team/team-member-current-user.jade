@@ -8,7 +8,12 @@
 .row
     .username
         .avatar
-            img(tg-avatar="currentUser", tg-bo-alt="currentUser.full_name_display")
+            img(tg-avatar="currentUser", tg-bo-alt="currentUser.full_name_display", ng-if="!emplogEnabled")
+            a(
+                ng-if="emplogEnabled"
+                tg-nav="project-named-employee-log:project=project.slug,employee=currentUser.username"
+            )
+                img(tg-avatar="currentUser", tg-bo-alt="currentUser.full_name_display")
 
             .avatar-data
                 .name
@@ -34,4 +39,5 @@
         issuesEnabled="issuesEnabled"
         tasksenabled="tasksEnabled"
         wikienabled="wikiEnabled"
+        emplogEnabled="emplogEnabled"
     )

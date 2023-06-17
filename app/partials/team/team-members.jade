@@ -8,7 +8,12 @@
 .row.member(ng-repeat="user in memberships | membersFilter:filtersQ:filtersRole")
     .username
         .avatar
-            img(tg-avatar="user", tg-bo-alt="user.full_name_display")
+            img(tg-avatar="user", tg-bo-alt="user.full_name_display", ng-if="!emplogEnabled")
+            a(
+                ng-if="emplogEnabled"
+                tg-nav="project-named-employee-log:project=project.slug,employee=user.username"
+            )
+                img(tg-avatar="user", tg-bo-alt="user.full_name_display")
 
             .avatar-data
                 a.name(

@@ -81,40 +81,22 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.issuesEnabled = project.is_issues_activated
         @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
         @scope.wikiEnabled = project.is_wiki_activated
+        @scope.employeeLogEnabled = project.is_employee_log_activated
+        @scope.employeeManagerActivated = @scope.employeeLogEnabled and project.my_permissions.indexOf("is_management") > -1
+        @scope.employeeActivated = @scope.employeeLogEnabled and project.my_permissions.indexOf("is_employee") > -1
         @scope.owner = project.owner.id
 
         return project
 
     loadMemberStats: ->
         return @rs.projects.memberStats(@scope.projectId).then (stats) =>
-          totals = {}
           _.forEach @scope.totals, (total, userId) =>
               vals = _.map(stats, (memberStats, statsKey) -> memberStats[userId])
               total = _.reduce(vals, (sum, el) -> sum + el)
               @scope.totals[userId] = total
 
-          @scope.stats = @._processStats(stats)
+          @scope.stats = stats
           @scope.stats.totals = @scope.totals
-
-    _processStat: (stat) ->
-        max = _.max(_.toArray(stat))
-        min = _.min(_.toArray(stat))
-
-        singleStat = Object()
-        for own key, value of stat
-            if value == min
-                singleStat[key] = 0.1
-            else if value == max
-                singleStat[key] = 1
-            else
-                singleStat[key] = (value * 0.5) / max
-
-        return singleStat
-
-    _processStats: (stats) ->
-        for key,value of stats
-            stats[key] = @._processStat(value)
-        return stats
 
     loadInitialData: ->
         project = @.loadProject()
@@ -156,6 +138,7 @@ TeamMemberStatsDirective = () ->
             issuesEnabled: "=issuesenabled"
             tasksEnabled: "=tasksenabled"
             wikiEnabled: "=wikienabled"
+            emplogEnabled: "=emplogEnabled"
         }
     }
 
@@ -176,6 +159,7 @@ TeamMemberCurrentUserDirective = () ->
             issuesEnabled: "=issuesenabled",
             tasksEnabled: "=tasksenabled",
             wikiEnabled: "=wikienabled",
+            emplogEnabled: "=emplogenabled",
             owner: "=owner"
         }
     }
@@ -200,7 +184,9 @@ TeamMembersDirective = () ->
             issuesEnabled: "=issuesenabled",
             tasksEnabled: "=tasksenabled",
             wikiEnabled: "=wikienabled",
-            owner: "=owner"
+            emplogEnabled: "=emplogenabled",
+            owner: "=owner",
+            project: "=project",
         }
     }
 
