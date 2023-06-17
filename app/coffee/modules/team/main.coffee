@@ -139,8 +139,8 @@ TeamMemberStatsDirective = () ->
             issuesEnabled: "=issuesenabled"
             tasksEnabled: "=tasksenabled"
             wikiEnabled: "=wikienabled"
-            emplogEnabled: "=emplogEnabled"
-            usEnabled: "=usEnabled"
+            emplogEnabled: "=emplogenabled"
+            usEnabled: "=usenabled"
         }
     }
 
