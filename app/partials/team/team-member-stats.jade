@@ -15,5 +15,7 @@
     span.points(ng-bind="stats.closed_tasks[userId]")
 .attribute(ng-if="tasksEnabled")
     span.points(ng-bind="stats.assigned_tasks[userId]")
+.attribute(ng-if="usEnabled")
+    span.points(ng-bind="stats.assigned_userstories[userId]")
 .attribute(ng-if="wikiEnabled")
     span.points(ng-bind="stats.wiki_changes[userId]")

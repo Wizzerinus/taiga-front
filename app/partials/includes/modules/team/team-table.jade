@@ -19,6 +19,8 @@ section.table-team.basic-table
                 span(translate="TEAM.COLUMN_TASKS_CLOSED")
             div.attribute(ng-if="tasksEnabled")
                 span(translate="TEAM.COLUMN_TASKS_ASSIGNED")
+            div.attribute(ng-if="usEnabled")
+                span(translate="TEAM.COLUMN_USER_STORIES_ASSIGNED")
             div.attribute(ng-if="wikiEnabled")
                 span(translate="TEAM.COLUMN_WIKI_PAGES_WRITTEN")
 
@@ -30,6 +32,7 @@ section.table-team.basic-table
         issuesEnabled="issuesEnabled"
         tasksenabled="tasksEnabled"
         wikienabled="wikiEnabled"
+        usenabled="usEnabled"
         owner="owner"
         ng-if="::currentUser"
         emplogenabled="employeeActivated"
@@ -48,6 +51,7 @@ section.table-team.basic-table(
     issuesEnabled="issuesEnabled"
     tasksenabled="tasksEnabled"
     wikienabled="wikiEnabled"
+    usenabled="usEnabled"
     owner="owner"
     emplogenabled="employeeManagerActivated"
     project="project"

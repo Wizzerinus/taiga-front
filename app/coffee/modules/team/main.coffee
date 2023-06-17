@@ -81,6 +81,7 @@ class TeamController extends mixOf(taiga.Controller, taiga.PageMixin)
         @scope.issuesEnabled = project.is_issues_activated
         @scope.tasksEnabled = project.is_kanban_activated or project.is_backlog_activated
         @scope.wikiEnabled = project.is_wiki_activated
+        @scope.usEnabled = @scope.tasksEnabled
         @scope.employeeLogEnabled = project.is_employee_log_activated
         @scope.employeeManagerActivated = @scope.employeeLogEnabled and project.my_permissions.indexOf("is_management") > -1
         @scope.employeeActivated = @scope.employeeLogEnabled and project.my_permissions.indexOf("is_employee") > -1
@@ -139,6 +140,7 @@ TeamMemberStatsDirective = () ->
             tasksEnabled: "=tasksenabled"
             wikiEnabled: "=wikienabled"
             emplogEnabled: "=emplogEnabled"
+            usEnabled: "=usEnabled"
         }
     }
 
@@ -160,6 +162,7 @@ TeamMemberCurrentUserDirective = () ->
             tasksEnabled: "=tasksenabled",
             wikiEnabled: "=wikienabled",
             emplogEnabled: "=emplogenabled",
+            usEnabled: "=usenabled",
             owner: "=owner"
         }
     }
@@ -185,6 +188,7 @@ TeamMembersDirective = () ->
             tasksEnabled: "=tasksenabled",
             wikiEnabled: "=wikienabled",
             emplogEnabled: "=emplogenabled",
+            usEnabled: "=usenabled",
             owner: "=owner",
             project: "=project",
         }
