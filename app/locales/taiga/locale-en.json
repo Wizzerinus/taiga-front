@@ -1706,6 +1706,7 @@
         "COLUMN_ISSUES_ASSIGNED": "Issues assigned",
         "COLUMN_TASKS_CLOSED": "Tasks closed",
         "COLUMN_TASKS_ASSIGNED": "Tasks assigned",
+        "COLUMN_USER_STORIES_ASSIGNED": "Stories assigned",
         "COLUMN_WIKI_PAGES_WRITTEN": "Wiki Pages written",
         "SECTION_TITLE_TEAM": "Team >",
         "SECTION_FILTER_ALL": "All",
