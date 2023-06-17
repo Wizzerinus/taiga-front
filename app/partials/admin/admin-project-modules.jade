@@ -142,6 +142,24 @@ div.wrapper(
                         span.check-text.check-yes(translate="COMMON.YES")
                         span.check-text.check-no(translate="COMMON.NO")
 
+            .module.module-emplog(ng-class="{true:'active', false:''}[project.is_employee_log_activated]")
+                .module-icon
+                    tg-svg(svg-icon="icon-module-employee-log")
+                .module-name(translate="ADMIN.MODULES.EMPLOYEE_LOG")
+                .module-desc(translate="ADMIN.MODULES.EMPLOYEE_LOG_DESCRIPTION")
+                .module-activation.module-direct-active
+                    div.check
+                        input.activate-input(
+                            id="functionality-employee-log"
+                            name="functionality-employee-log"
+                            type="checkbox"
+                            ng-checked="project.is_employee_log_activated"
+                            ng-model="project.is_employee_log_activated"
+                        )
+                        div
+                        span.check-text.check-yes(translate="COMMON.YES")
+                        span.check-text.check-no(translate="COMMON.NO")
+
             .module.module-videoconference(ng-class="{true:'active', false:''}[isVideoconferenceActivated]")
                 .module-icon
                     tg-svg(svg-icon="icon-module-meet")

@@ -326,6 +326,11 @@
                 "VIEW_WIKI_LINKS": "View wiki links",
                 "ADD_WIKI_LINKS": "Add wiki links",
                 "DELETE_WIKI_LINKS": "Delete wiki links"
+            },
+            "EMPLOYEE_LOG": {
+                "NAME": "Employee Log",
+                "IS_EMPLOYEE": "Have an employee log page",
+                "IS_MANAGEMENT": "View all employee log pages"
             }
         }
     },
@@ -540,6 +545,8 @@
             "ISSUES_DESCRIPTION": "Track the bugs, questions and enhancements related to your project. Don't miss anything!",
             "WIKI": "Wiki",
             "WIKI_DESCRIPTION": "Add, modify, or delete content in collaboration with others. This is the right place for your project's documentation.",
+            "EMPLOYEE_LOG": "Employee Log",
+            "EMPLOYEE_LOG_DESCRIPTION": "Keep track of your team members' current tasks, the log of their tasks finished in the past, and monitor their activity.",
             "MEETUP": "Meet Up",
             "MEETUP_DESCRIPTION": "Choose your videoconference system.",
             "SELECT_VIDEOCONFERENCE": "Select a videoconference system",
@@ -926,7 +933,8 @@
             "MEETUP": "Meetup",
             "SETTINGS": "Settings",
             "SCRUM": "Scrum",
-            "COLLAPSE_MENU": "collapse menu"
+            "COLLAPSE_MENU": "collapse menu",
+            "EMPLOYEE_LOG": "Employee Log"
         },
         "NAVIGATION": {
             "PROJECTS": "Projects",
@@ -1709,6 +1717,20 @@
         "SECTION_FILTER_ALL": "All",
         "CONFIRM_LEAVE_PROJECT": "Are you sure you want to leave the project?",
         "ACTION_LEAVE_PROJECT": "Leave this project"
+    },
+    "EMPLOYEE_LOG": {
+        "PAGE_TITLE": "Employee Log",
+        "PAGE_DESCRIPTION": "Keep track of each employee's tasks in the project {{projectName}}: {{projectDescription}}",
+        "TABLE": {
+            "COLUMNS": {
+                "NAME": "Name",
+                "CATEGORY": "Category",
+                "TYPE": "Type",
+                "CREATED_DATE": "Date created",
+                "DATE": "Date finished",
+                "STATUS": "Status"
+            }
+        }
     },
     "USER_SETTINGS": {
         "AVATAR_MAX_SIZE": "[Max. size: {{maxFileSize}}]",

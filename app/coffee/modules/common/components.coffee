@@ -489,3 +489,26 @@ TgMainTitleDirective = ($translate) ->
     }
 
 module.directive("tgMainTitle", ["$translate",  TgMainTitleDirective])
+
+#############################################################################
+## Employee log status directive
+#############################################################################
+ListItemEmplogStatusDirective = ->
+    link = ($scope, $el, $attrs) ->
+        render = (item) ->
+            domNode = $el.find(".level")
+            domNode.css("background-color", item.color)
+            domNode.attr("title", item.status)
+
+        bindOnce $scope, "tgListitemEmplogStatus", () ->
+            render(item)
+
+        $scope.$watch $attrs.tgListitemEmplogStatus, (item) ->
+            render(item)
+
+    return {
+        link: link
+        templateUrl: "common/components/level.html"
+    }
+
+module.directive("tgListitemEmplogStatus", ListItemEmplogStatusDirective)

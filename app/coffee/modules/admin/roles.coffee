@@ -433,6 +433,15 @@ RolePermissionsDirective = ($rootscope, $repo, $confirm, $compile) ->
                 permissions: setActivePermissions(wikiPermissions)
             })
 
+            employeeLogPermissions = [
+                { key: "is_employee", name: "COMMON.PERMISIONS_CATEGORIES.EMPLOYEE_LOG.IS_EMPLOYEE" }
+                { key: "is_management", name: "COMMON.PERMISIONS_CATEGORIES.EMPLOYEE_LOG.IS_MANAGEMENT" }
+            ]
+            categories.push({
+                name: "COMMON.PERMISIONS_CATEGORIES.EMPLOYEE_LOG.NAME",
+                permissions: setActivePermissions(employeeLogPermissions)
+            })
+
             return setActivePermissionsPerCategory(categories)
 
         renderResume = (element, category) ->

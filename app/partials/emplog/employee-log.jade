@@ -1,0 +1,124 @@
+//- This Source Code Form is subject to the terms of the Mozilla Public
+//- License, v. 2.0. If a copy of the MPL was not distributed with this
+//- file, You can obtain one at http://mozilla.org/MPL/2.0/.
+//-
+//- Copyright (c) 2023-present Wizzerinus
+
+doctype html
+
+// TODO: add tg-issues-ordering
+div.wrapper(
+    ng-controller="EmployeeLogController as ctrl",
+    ng-init="section='employee-log'"
+)
+    tg-project-menu
+
+    section.main.emplog-main
+        .emplog-top
+            header.emplog-header
+                include ../includes/components/mainTitle
+
+        .emplog-container
+            section.emplog-table.basic-table(ng-class="{empty: !ctrl.data.length}")
+
+                div.row.title
+                    div.subject(data-fieldname="name")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.NAME" | translate}}
+                        // svg(viewBox="0 0 16 16")
+                            path(
+                                class="arrow-up"
+                                d="M11.6232 6.57199C12.5713 6.57199 12.9872 5.37569 12.2435 4.7876L8.62027 1.92248C8.25672 1.635 7.74328 1.635 7.37973 1.92248L3.75652 4.7876C3.01283 5.37569 3.42868 6.57199 4.37679 6.57199L11.6232 6.57199Z")
+                            path(
+                                class="arrow-down"
+                                d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+
+                    div.issue-field(data-fieldname="category")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.CATEGORY" | translate}}
+                    div.issue-field(data-fieldname="type")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.TYPE" | translate}}
+                        // svg(viewBox="0 0 16 16")
+                            path(
+                                class="arrow-up"
+                                d="M11.6232 6.57199C12.5713 6.57199 12.9872 5.37569 12.2435 4.7876L8.62027 1.92248C8.25672 1.635 7.74328 1.635 7.37973 1.92248L3.75652 4.7876C3.01283 5.37569 3.42868 6.57199 4.37679 6.57199L11.6232 6.57199Z")
+                            path(
+                                class="arrow-down"
+                                d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+
+                    div.modified-field(data-fieldname="created_date")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.CREATED_DATE" | translate}}
+                        // svg(viewBox="0 0 16 16")
+                            path(
+                                class="arrow-up"
+                                d="M11.6232 6.57199C12.5713 6.57199 12.9872 5.37569 12.2435 4.7876L8.62027 1.92248C8.25672 1.635 7.74328 1.635 7.37973 1.92248L3.75652 4.7876C3.01283 5.37569 3.42868 6.57199 4.37679 6.57199L11.6232 6.57199Z")
+                            path(
+                                class="arrow-down"
+                                d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+
+                    div.modified-field(data-fieldname="date")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.DATE" | translate}}
+                        // svg(viewBox="0 0 16 16")
+                            path(
+                                class="arrow-up"
+                                d="M11.6232 6.57199C12.5713 6.57199 12.9872 5.37569 12.2435 4.7876L8.62027 1.92248C8.25672 1.635 7.74328 1.635 7.37973 1.92248L3.75652 4.7876C3.01283 5.37569 3.42868 6.57199 4.37679 6.57199L11.6232 6.57199Z")
+                            path(
+                                class="arrow-down"
+                                d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+
+                    div.level-field(data-fieldname="status")
+                        span.wide {{"EMPLOYEE_LOG.TABLE.COLUMNS.STATUS" | translate}}
+                        // svg(viewBox="0 0 16 16")
+                            path(
+                                class="arrow-up"
+                                d="M11.6232 6.57199C12.5713 6.57199 12.9872 5.37569 12.2435 4.7876L8.62027 1.92248C8.25672 1.635 7.74328 1.635 7.37973 1.92248L3.75652 4.7876C3.01283 5.37569 3.42868 6.57199 4.37679 6.57199L11.6232 6.57199Z")
+                            path(
+                                class="arrow-down"
+                                d="M11.6232 9.42892C12.5713 9.42892 12.9872 10.6252 12.2435 11.2133L8.62027 14.0784C8.25672 14.3659 7.74328 14.3659 7.37973 14.0784L3.75652 11.2133C3.01283 10.6252 3.42868 9.42892 4.37679 9.42892H11.6232Z")
+
+                div.row.table-main(
+                    ng-repeat="item in ctrl.data track by item.ref"
+                )
+                    div.subject(ng-if="item.type == 'userstory'")
+                        a(
+                            href="" title="{{ ::item.name }}"
+                            tg-nav="project-userstories-detail:project=project.slug,ref=item.ref"
+                        )
+                            span.issue-text
+                                span.issue-ref(tg-bo-ref="::item.ref")
+                                span.issue-subject(ng-bind-html="item.name | emojify")
+
+                    div.subject(ng-if="item.type == 'issue'")
+                        a(
+                            href="" title="{{ ::item.name }}"
+                            tg-nav="project-issues-detail:project=project.slug,ref=item.ref"
+                        )
+                            span.issue-text
+                                span.issue-ref(tg-bo-ref="::item.ref")
+                                span.issue-subject(ng-bind-html="item.name | emojify")
+
+                    div.subject(ng-if="item.type == 'task'")
+                        a(
+                            href="" title="{{ ::item.name }}"
+                            tg-nav="project-tasks-detail:project=project.slug,ref=item.ref"
+                        )
+                            span.issue-text
+                                span.issue-ref(tg-bo-ref="::item.ref")
+                                span.issue-subject(ng-bind-html="item.name | emojify")
+
+                    div.issue-field
+                        span(ng-bind-html="item.category")
+
+                    div.issue-field(ng-if="item.type == 'userstory'")
+                        span User Story
+                    div.issue-field(ng-if="item.type == 'issue'")
+                        span Issue
+                    div.issue-field(ng-if="item.type == 'task'")
+                        span Task
+
+                    div.modified-field
+                        span(ng-bind-html="item.created_date|momentFormat:'DD MMM YYYY'")
+
+                    div.modified-field
+                        span(ng-bind-html="item.date|momentFormat:'DD MMM YYYY'")
+
+                    div.level-field
+                        div.status(tg-listitem-emplog-status="item")

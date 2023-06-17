@@ -67,6 +67,8 @@ urls = {
     "project-epics": "/project/:project/epics"
     "project-search": "/project/:project/search"
     "project-timeline": "/project/:project/timeline"
+    "project-employee-log": "/project/:project/employee-log"
+    "project-named-employee-log": "/project/:project/employee-log/:employee"
 
     "project-epics-detail": "/project/:project/epic/:ref"
     "project-userstories-detail": "/project/:project/us/:ref"

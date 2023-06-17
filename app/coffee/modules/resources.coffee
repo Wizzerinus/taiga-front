@@ -139,6 +139,9 @@ urls = {
     "issue-unwatch": "/issues/%s/unwatch"
     "promote-issue-to-us": "/issues/%s/promote_to_user_story"
 
+    # Employee log
+    "employee-log": "/projects/employee_log"
+
     # Swimlanes
     "swimlanes": "/swimlanes"
     "swimlane-userstory-statuses": "/swimlane-userstory-statuses"
@@ -286,5 +289,6 @@ module.run([
     "$tgWebhookLogsResourcesProvider",
     "$tgLocalesResourcesProvider",
     "$tgUsersResourcesProvider",
+    "$tgEmployeeLogResourcesProvider",
     initResources
 ])

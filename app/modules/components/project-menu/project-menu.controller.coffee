@@ -74,6 +74,9 @@ class ProjectMenuController
         if @.project.get("is_wiki_activated") && @.project.get("my_permissions").indexOf("view_wiki_pages") != -1
             @.menu = @.menu.set("wiki", true)
 
+        if @.project.get("is_employee_log_activated") && @.project.get("my_permissions").indexOf("is_employee") != -1
+            @.menu = @.menu.set("employee-log", true)
+
     _getActiveSection: () ->
         sectionName = @projectService.section
 

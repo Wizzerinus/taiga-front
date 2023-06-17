@@ -175,7 +175,7 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
         }
     )
 
-    # Project
+    # Project - timeline (main page)
     $routeProvider.when("/project/:pslug/timeline",
         {
             templateUrl: "projects/project/project.html",
@@ -308,6 +308,22 @@ configure = ($routeProvider, $locationProvider, $httpProvider, $provide, $tgEven
             templateUrl: "issue/issues-detail.html",
             loader: true,
             section: "issues"
+        }
+    )
+
+    # Employee log
+    $routeProvider.when("/project/:pslug/employee-log",
+        {
+            templateUrl: "emplog/employee-log.html",
+            loader: true,
+            section: "employee-log"
+        }
+    )
+    $routeProvider.when("/project/:pslug/employee-log/:userslug",
+        {
+            templateUrl: "emplog/employee-log.html",
+            loader: true,
+            section: "employee-log"
         }
     )
 
