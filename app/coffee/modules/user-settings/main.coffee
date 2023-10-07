@@ -65,9 +65,6 @@ class UserSettingsController extends mixOf(taiga.Controller, taiga.PageMixin)
             @scope.locales = locales
             return locales
 
-    openDeleteLightbox: ->
-        @rootscope.$broadcast("deletelightbox:new", @scope.user)
-
     getLan: ->
         return @scope.user.lang ||
                @translate.preferredLanguage()
