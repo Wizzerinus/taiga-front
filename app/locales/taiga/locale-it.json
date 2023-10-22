@@ -848,6 +848,9 @@
             "SUBTITLE": "Imposta i valori predefiniti per tutti i selettori.",
             "TITLE": "Valori predefiniti",
             "MENU_TITLE": "Preimpostati"
+        },
+        "PLUGINS": {
+            "PAGE_TITLE": "{{pluginName}} - Plugin  - {{projectName}}"
         }
     },
     "USER": {
@@ -1639,7 +1642,7 @@
                 "ASSIGNED_TO": "Assegna a"
             },
             "TITLE_ACTION_CHANGE_STATUS": "Cambia stato",
-            "TITLE_ACTION_ASSIGNED_TO": "Assegna a",
+            "TITLE_ACTION_ASSIGNED_TO": "Assegnato a",
             "BLOCKED": "Bloccato",
             "EMPTY": {
                 "TITLE": "Non ci sono problemi da segnalare :-)",

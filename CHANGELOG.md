@@ -1,8 +1,19 @@
 # Changelog
 
-## 6.7.0 (unreleased)
+## 6.7.2 (unreleased)
 
 - ...
+
+## 6.7.1 (2023-09-20)
+
+- Fix, relative wiki links.
+- Fix, remove editor ellipsis transformation.
+- Fix, wysiwyg autlinks.
+- Fix, internal project urls open in the same tab.
+
+## 6.7.0 (2023-06-12)
+
+- Fix style for error messages in auth forms (thanks to [@DPRIYATHAM](https://github.com/DPRIYATHAM))
 
 ## 6.6.2 (2023-04-25)
 
